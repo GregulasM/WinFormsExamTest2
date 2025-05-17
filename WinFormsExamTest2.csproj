@@ -20,4 +20,10 @@
     <PackageReference Include="SQLitePCLRaw.core" Version="2.1.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="UserControlTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

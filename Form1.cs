@@ -14,6 +14,9 @@ namespace WinFormsExamTest2
 			{
 				var выгрузка = db.Клиенты.ToList();
 				dataGridView1.DataSource = выгрузка;
+
+				ShowClients();
+
 			}
 		}
 
@@ -38,5 +41,35 @@ namespace WinFormsExamTest2
 			}
 			
 		}
+
+		private void ShowClients()
+		{
+			panel1.Controls.Clear();
+			int y = 10;
+			int spacing = 10;
+
+			using (AppContext db = new AppContext())
+			{
+
+				var clients = db.Клиенты.ToList();
+
+				foreach (var client in clients)
+				{
+					var card = new UserControlTest();
+					card.ИмяФорма = client.Имя;
+					card.ФамилияФорма = client.Фамилия;
+					card.ВозрастФорма = client.Возраст.ToString();
+
+					card.Left = 10;
+					card.Top = y;
+					card.Width = panel1.Width - 40;
+
+					panel1.Controls.Add(card);
+
+					y += card.Height + spacing;
+				}
+			}
+		}
+
 	}
 }
